@@ -1,0 +1,4 @@
+data/*
+output/*
+src/__pycache__/*
+src/*.pyc

@@ -118,6 +118,8 @@ class PDFQuizProcessor:
                 if i + 1 < len(lines) and '答案' in lines[i + 1]:
                     answers_line = lines[i + 1].replace('答案', '').strip().split()
                     for qn, ans in zip(question_numbers, answers_line):
+                        qn = re.sub(r'第(\d+)題', r'\1', qn)  # 將 "第1題" 轉換為 "1"
+                        qn = qn.lstrip('0')  # 移除前導零
                         if qn.isdigit():
                             num = int(qn)
                             answers_dict[num] = ans
